@@ -1,0 +1,35 @@
+@import "bootstrap";
+@import "menu";
+@import "menu_items";
+@import "font-awesome";
+
+body {
+  background-color: #EEEEEE;
+  padding-top: 56px;
+}
+
+.bg-color-white {
+  background-color: #FFFFFF
+}
+
+.full-height {
+  min-height: 100vh;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.bg-color-yellow {
+  background-color: #FFFF00
+}
+
+.bg-color-red {
+  background-color: #FF0000
+}
+
+#nav-item-list {
+  .nav-item {
+    margin: 0 10px;
+  }
+}

@@ -10,31 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170911131540) do
+ActiveRecord::Schema.define(version: 20170926142254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "articles", force: :cascade do |t|
-    t.string "title"
-    t.integer "user_id"
-    t.text "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "comments", force: :cascade do |t|
-    t.string "body"
-    t.integer "user_id"
-    t.integer "article_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "users", force: :cascade do |t|
+  create_table "menu_items", force: :cascade do |t|
     t.string "name"
+    t.text "description"
+    t.decimal "price"
+    t.string "section"
+    t.text "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.string "user_name"
+    t.string "address"
+    t.text "cart_items"
+    t.decimal "delivery_cost"
+    t.decimal "total_cost"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "score"
+    t.text "review_text"
+    t.bigint "menu_item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["menu_item_id"], name: "index_reviews_on_menu_item_id"
+  end
+
+  add_foreign_key "reviews", "menu_items"
 end
